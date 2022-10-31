@@ -4,6 +4,7 @@ import { UpdateSignUpDto } from './dto/update-sign-up.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as brypt from 'bcrypt';
 import { access } from 'fs';
+import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
 
 @Injectable()
 export class SignUpsService {
@@ -15,6 +16,19 @@ export class SignUpsService {
     const hash = brypt.hashSync(password, salt);
     createSignUpDto.password = hash;
     return this.prisma.signUp.create({ data: createSignUpDto });
+  }
+
+  createQuestionnaire(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
+    return this.prisma.questionnaire.create({
+      data: {
+        ...createQuestionnaireDto,
+        signUp: {
+          connect: {
+            id,
+          },
+        },
+      },
+     });
   }
 
   findAll() {

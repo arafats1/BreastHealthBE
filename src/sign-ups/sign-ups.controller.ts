@@ -4,10 +4,12 @@ import { CreateSignUpDto } from './dto/create-sign-up.dto';
 import { UpdateSignUpDto } from './dto/update-sign-up.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { SignUpEntity } from './entities/sign-up.entity';
+import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
 
 @Controller('')
 @ApiTags('Users')
 export class SignUpsController {
+  
   constructor(private readonly signUpsService: SignUpsService) {}
 
   @UseInterceptors(ClassSerializerInterceptor)
@@ -30,24 +32,38 @@ export class SignUpsController {
     return signUps.map((signUp) => new SignUpEntity(signUp));
   }
 
-  // @UseInterceptors(ClassSerializerInterceptor)
-  // @Post('users')
-  // @ApiOperation({ summary: 'Creates a new user' })
-  // @ApiResponse({
-  //   status: 201,
-  //   description: 'Successful',
-  // })
-  // @ApiResponse({
-  //   status: 403,
-  //   description: 'Forbidden',
-  // })
-  // @ApiResponse({
-  //   status: 500,
-  //   description: 'Internal server error',
-  // })
-  // create(@Body() createSignUpDto: CreateSignUpDto) {
-  //   return this.signUpsService.create(createSignUpDto);
-  // }
+  @Post('users/:id/questions')
+  @ApiOperation({ summary: 'Creates a questionnaire' })
+  @ApiBody({ 
+    schema: {
+      type: 'object',
+      properties: {
+        question: {
+          type: 'string',
+          example: 'Is there anyone in your family with breast cancer?',
+        },
+        answer: {
+          type: 'string',
+          example: 'Yes',
+        }
+      }
+    }
+   })
+  @ApiResponse({
+    status: 201,
+    description: 'Created',
+  })
+  @ApiResponse({
+    status: 403,
+    description: 'Forbidden',
+  })
+  @ApiResponse({
+    status: 500,
+    description: 'Internal server error',
+  })
+  createQuestionnaire(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
+    return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
+  }
 
 
   findOneByEmail(@Param('email') email: string) {

@@ -10,12 +10,15 @@ exports.QuestionnairesModule = void 0;
 const common_1 = require("@nestjs/common");
 const questionnaires_service_1 = require("./questionnaires.service");
 const questionnaires_controller_1 = require("./questionnaires.controller");
+const prisma_module_1 = require("../prisma/prisma.module");
 let QuestionnairesModule = class QuestionnairesModule {
 };
 QuestionnairesModule = __decorate([
     (0, common_1.Module)({
         controllers: [questionnaires_controller_1.QuestionnairesController],
-        providers: [questionnaires_service_1.QuestionnairesService]
+        providers: [questionnaires_service_1.QuestionnairesService],
+        imports: [prisma_module_1.PrismaModule],
+        exports: [questionnaires_service_1.QuestionnairesService],
     })
 ], QuestionnairesModule);
 exports.QuestionnairesModule = QuestionnairesModule;

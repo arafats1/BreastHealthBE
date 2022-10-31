@@ -25,6 +25,15 @@ let SignUpsService = class SignUpsService {
         createSignUpDto.password = hash;
         return this.prisma.signUp.create({ data: createSignUpDto });
     }
+    createQuestionnaire(id, createQuestionnaireDto) {
+        return this.prisma.questionnaire.create({
+            data: Object.assign(Object.assign({}, createQuestionnaireDto), { signUp: {
+                    connect: {
+                        id,
+                    },
+                } }),
+        });
+    }
     findAll() {
         return this.prisma.signUp.findMany();
     }

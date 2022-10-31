@@ -18,6 +18,7 @@ const sign_ups_service_1 = require("./sign-ups.service");
 const update_sign_up_dto_1 = require("./dto/update-sign-up.dto");
 const swagger_1 = require("@nestjs/swagger");
 const sign_up_entity_1 = require("./entities/sign-up.entity");
+const create_questionnaire_dto_1 = require("../questionnaires/dto/create-questionnaire.dto");
 let SignUpsController = class SignUpsController {
     constructor(signUpsService) {
         this.signUpsService = signUpsService;
@@ -25,6 +26,9 @@ let SignUpsController = class SignUpsController {
     async findAll() {
         const signUps = await this.signUpsService.findAll();
         return signUps.map((signUp) => new sign_up_entity_1.SignUpEntity(signUp));
+    }
+    createQuestionnaire(id, createQuestionnaireDto) {
+        return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
     }
     findOneByEmail(email) {
         return this.signUpsService.findOneByEmail(email);
@@ -59,6 +63,42 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SignUpsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Post)('users/:id/questions'),
+    (0, swagger_1.ApiOperation)({ summary: 'Creates a questionnaire' }),
+    (0, swagger_1.ApiBody)({
+        schema: {
+            type: 'object',
+            properties: {
+                question: {
+                    type: 'string',
+                    example: 'Is there anyone in your family with breast cancer?',
+                },
+                answer: {
+                    type: 'string',
+                    example: 'Yes',
+                }
+            }
+        }
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'Created',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 403,
+        description: 'Forbidden',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 500,
+        description: 'Internal server error',
+    }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, create_questionnaire_dto_1.CreateQuestionnaireDto]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "createQuestionnaire", null);
 __decorate([
     __param(0, (0, common_1.Param)('email')),
     __metadata("design:type", Function),

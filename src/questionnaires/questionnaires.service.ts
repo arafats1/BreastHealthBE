@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateQuestionnaireDto } from './dto/create-questionnaire.dto';
 import { UpdateQuestionnaireDto } from './dto/update-questionnaire.dto';
-
+import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class QuestionnairesService {
+  constructor(private prisma: PrismaService) {}
   create(createQuestionnaireDto: CreateQuestionnaireDto) {
-    return 'This action adds a new questionnaire';
+    return this.prisma.questionnaire.create({ data: createQuestionnaireDto });
   }
 
   findAll() {
