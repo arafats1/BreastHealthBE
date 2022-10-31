@@ -14,8 +14,8 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-  .setTitle('Agalm  APIs')
-  .setDescription('The APIs that Agalm provides for its users')
+  .setTitle('Breast Health Application')
+  .setDescription('The Breast Health APIs description')
   .setVersion('1.0')
   .build();
   

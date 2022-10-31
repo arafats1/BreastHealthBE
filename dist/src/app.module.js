@@ -14,11 +14,12 @@ const sign_ups_module_1 = require("./sign-ups/sign-ups.module");
 const auth_module_1 = require("./auth/auth.module");
 const core_1 = require("@nestjs/core");
 const prisma_module_1 = require("./prisma/prisma.module");
+const questionnaires_module_1 = require("./questionnaires/questionnaires.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule,],
+        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, {
                 provide: core_1.APP_PIPE,

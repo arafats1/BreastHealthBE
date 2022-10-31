@@ -16,6 +16,16 @@ model SignUp {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+  questions  Questionnaire[]
 
+}
+
+model Questionnaire{
+  id       Int      @id @default(autoincrement())
+  question String
+  answer   String
+  createdAt DateTime @default(now())
+  signUp   SignUp   @relation(fields: [signUpId], references: [id])
+  signUpId Int
 }
 
