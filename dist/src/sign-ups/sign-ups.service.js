@@ -35,10 +35,10 @@ let SignUpsService = class SignUpsService {
         });
     }
     findAll() {
-        return this.prisma.signUp.findMany();
+        return this.prisma.signUp.findMany({ include: { questions: { select: { question: true, answer: true } } } });
     }
     findOne(id) {
-        return this.prisma.signUp.findUnique({ where: { id: id } });
+        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { question: true, answer: true } } } });
     }
     findOneByEmail(email) {
         return this.prisma.signUp.findUnique({ where: { email: email } });

@@ -33,11 +33,11 @@ export class SignUpsService {
 
   findAll() {
     //Return data from signUp table, user table and its foreign key
-    return this.prisma.signUp.findMany();
+    return this.prisma.signUp.findMany({include:{questions:{select:{question:true, answer:true}}}});
   }
 
   findOne(id: number) {
-    return this.prisma.signUp.findUnique( {where: {id: id}});
+    return this.prisma.signUp.findUnique( {where: {id: id},include:{questions:{select:{question:true, answer:true}}} });
 
   }
   findOneByEmail(email: string) {
