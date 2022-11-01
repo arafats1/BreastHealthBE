@@ -6,7 +6,8 @@ async function main() {
     // const signUp = await prisma.signUp.create({
     //     data: {
     //         email:"jane@gmail.com",
-    //         fullName:"Jane Doe",
+    //         firstName:"Jane",
+    //         lastName:"Doe",
     //         phone:"0709123874",
     //         password:"password"
         

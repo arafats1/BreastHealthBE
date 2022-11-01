@@ -5,7 +5,9 @@ export class CreateSignUpDto {
     @IsEmail()
     email: string;
     @ApiProperty()
-    fullName: string;
+    firstName: string;
+    @ApiProperty()
+    lastName: string;
     @ApiProperty()
     phone : string;
     @ApiProperty()

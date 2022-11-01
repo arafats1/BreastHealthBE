@@ -82,9 +82,14 @@ export class AppController {
           example: 'username@gmail.com',
           description: 'Email of the user',
         },
-        fullName: {
+        firstName: {
           type: 'string',
-          example: 'Jane Doe',
+          example: 'Jane',
+          description: 'User full name',
+        },
+        lastName: {
+          type: 'string',
+          example: 'Doe',
           description: 'User full name',
         },
         phone: {
