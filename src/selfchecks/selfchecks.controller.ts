@@ -10,7 +10,7 @@ export class SelfchecksController {
   constructor(private readonly selfchecksService: SelfchecksService) {}
 
   @Post()
-  @ApiOperation({ summary: 'Get all selfchecks' })
+  @ApiOperation({ summary: 'Posts self check photos to guide users' })
   @ApiBody({ type: CreateSelfcheckDto })
   create(@Body() createSelfcheckDto: CreateSelfcheckDto) {
     return this.selfchecksService.create(createSelfcheckDto);
