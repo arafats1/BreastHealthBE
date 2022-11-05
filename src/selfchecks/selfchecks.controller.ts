@@ -23,6 +23,7 @@ export class SelfchecksController {
   }
 
   @Get(':id')
+  //
   @ApiOperation({ summary: 'Get selfcheck by id' })
   findOne(@Param('id') id: string) {
     return this.selfchecksService.findOne(+id);
