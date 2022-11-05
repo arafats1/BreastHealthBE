@@ -23,15 +23,38 @@ let SignUpsService = class SignUpsService {
         const salt = brypt.genSaltSync(saltOrRounds);
         const hash = brypt.hashSync(password, salt);
         createSignUpDto.password = hash;
-        return this.prisma.signUp.create({ data: createSignUpDto });
+        let { email, firstName, lastName, phone, questions } = createSignUpDto;
+        return this.prisma.signUp.create({
+            data: {
+                email,
+                firstName,
+                lastName,
+                phone,
+                password: hash,
+                questions: {
+                    create: questions,
+                },
+            },
+        });
     }
     createQuestionnaire(id, createQuestionnaireDto) {
-        return this.prisma.questionnaire.create({
-            data: Object.assign(Object.assign({}, createQuestionnaireDto), { signUp: {
-                    connect: {
-                        id,
-                    },
-                } }),
+        return this.prisma.signUp.update({
+            where: { id: id },
+            data: {
+                questions: {
+                    create: createQuestionnaireDto,
+                },
+            },
+        });
+    }
+    createFollowup(id, createQuestionnaireDto) {
+        return this.prisma.signUp.update({
+            where: { id: id },
+            data: {
+                questions: {
+                    create: createQuestionnaireDto,
+                },
+            },
         });
     }
     findAll() {

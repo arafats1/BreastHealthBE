@@ -30,3 +30,16 @@ model Questionnaire{
   signUpId Int
 }
 
+model SelfCheck {
+  id       Int      @id @default(autoincrement())
+  title    String
+  description String
+  imageUrl String
+}
+
+model BreastVideo {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String
+  url  String
+}

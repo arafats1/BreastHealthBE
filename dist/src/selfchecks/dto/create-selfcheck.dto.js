@@ -9,27 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateQuestionnaireDto = void 0;
+exports.CreateSelfcheckDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class CreateQuestionnaireDto {
+class CreateSelfcheckDto {
 }
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        isArray: true,
-        type: String,
-    }),
+    (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateQuestionnaireDto.prototype, "question", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        isArray: true,
-        type: String,
-    }),
-    __metadata("design:type", String)
-], CreateQuestionnaireDto.prototype, "answer", void 0);
+], CreateSelfcheckDto.prototype, "title", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Object)
-], CreateQuestionnaireDto.prototype, "signUp", void 0);
-exports.CreateQuestionnaireDto = CreateQuestionnaireDto;
-//# sourceMappingURL=create-questionnaire.dto.js.map
+    __metadata("design:type", String)
+], CreateSelfcheckDto.prototype, "description", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateSelfcheckDto.prototype, "imageUrl", void 0);
+exports.CreateSelfcheckDto = CreateSelfcheckDto;
+//# sourceMappingURL=create-selfcheck.dto.js.map

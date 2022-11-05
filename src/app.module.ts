@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
 import { PrismaModule } from './prisma/prisma.module';
 import { QuestionnairesModule } from './questionnaires/questionnaires.module';
+import { SelfchecksModule } from './selfchecks/selfchecks.module';
 
 
 
@@ -13,7 +14,7 @@ import { QuestionnairesModule } from './questionnaires/questionnaires.module';
 
 
 @Module({
-  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule],
+  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_PIPE,

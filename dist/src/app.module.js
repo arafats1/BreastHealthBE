@@ -15,11 +15,12 @@ const auth_module_1 = require("./auth/auth.module");
 const core_1 = require("@nestjs/core");
 const prisma_module_1 = require("./prisma/prisma.module");
 const questionnaires_module_1 = require("./questionnaires/questionnaires.module");
+const selfchecks_module_1 = require("./selfchecks/selfchecks.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule],
+        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule, selfchecks_module_1.SelfchecksModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, {
                 provide: core_1.APP_PIPE,

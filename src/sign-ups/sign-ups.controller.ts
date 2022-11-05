@@ -36,19 +36,19 @@ export class SignUpsController {
   @ApiOperation({ summary: 'Creates a questionnaire' })
   @ApiBody({ 
     schema: {
-      type: 'object',
-      properties: {
-        question: {
-          type: 'string',
-          example: 'Is there anyone in your family with breast cancer?',
+      type: 'array',
+      example: [
+        {
+          question: 'Any sweling on your left orone part of the breast?',
+          answer: 'No',
         },
-        answer: {
-          type: 'string',
-          example: 'Yes',
+        {
+          question: 'Have you detected any lumps?',
+          answer: 'Yes',
         }
-      }
-    }
-   })
+      ]
+    },
+    })
   @ApiResponse({
     status: 201,
     description: 'Created',
@@ -62,6 +62,39 @@ export class SignUpsController {
     description: 'Internal server error',
   })
   createQuestionnaire(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
+    return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
+  }
+
+  @Post('users/:id/followup')
+  @ApiOperation({ summary: 'Creates a follow up questions' })
+  @ApiBody({ 
+    schema: {
+      type: 'array',
+      example: [
+        {
+          question: 'Any sweling on your left orone part of the breast?',
+          answer: 'No',
+        },
+        {
+          question: 'Have you detected any lumps?',
+          answer: 'Yes',
+        }
+      ]
+    },
+    })
+  @ApiResponse({
+    status: 201,
+    description: 'Created',
+  })
+  @ApiResponse({
+    status: 403,
+    description: 'Forbidden',
+  })
+  @ApiResponse({
+    status: 500,
+    description: 'Internal server error',
+  })
+  createFollowup(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
     return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
   }
 

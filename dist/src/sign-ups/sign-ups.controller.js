@@ -30,6 +30,9 @@ let SignUpsController = class SignUpsController {
     createQuestionnaire(id, createQuestionnaireDto) {
         return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
     }
+    createFollowup(id, createQuestionnaireDto) {
+        return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
+    }
     findOneByEmail(email) {
         return this.signUpsService.findOneByEmail(email);
     }
@@ -68,18 +71,18 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Creates a questionnaire' }),
     (0, swagger_1.ApiBody)({
         schema: {
-            type: 'object',
-            properties: {
-                question: {
-                    type: 'string',
-                    example: 'Is there anyone in your family with breast cancer?',
+            type: 'array',
+            example: [
+                {
+                    question: 'Any sweling on your left orone part of the breast?',
+                    answer: 'No',
                 },
-                answer: {
-                    type: 'string',
-                    example: 'Yes',
+                {
+                    question: 'Have you detected any lumps?',
+                    answer: 'Yes',
                 }
-            }
-        }
+            ]
+        },
     }),
     (0, swagger_1.ApiResponse)({
         status: 201,
@@ -99,6 +102,42 @@ __decorate([
     __metadata("design:paramtypes", [String, create_questionnaire_dto_1.CreateQuestionnaireDto]),
     __metadata("design:returntype", void 0)
 ], SignUpsController.prototype, "createQuestionnaire", null);
+__decorate([
+    (0, common_1.Post)('users/:id/followup'),
+    (0, swagger_1.ApiOperation)({ summary: 'Creates a follow up questions' }),
+    (0, swagger_1.ApiBody)({
+        schema: {
+            type: 'array',
+            example: [
+                {
+                    question: 'Any sweling on your left orone part of the breast?',
+                    answer: 'No',
+                },
+                {
+                    question: 'Have you detected any lumps?',
+                    answer: 'Yes',
+                }
+            ]
+        },
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'Created',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 403,
+        description: 'Forbidden',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 500,
+        description: 'Internal server error',
+    }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, create_questionnaire_dto_1.CreateQuestionnaireDto]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "createFollowup", null);
 __decorate([
     __param(0, (0, common_1.Param)('email')),
     __metadata("design:type", Function),

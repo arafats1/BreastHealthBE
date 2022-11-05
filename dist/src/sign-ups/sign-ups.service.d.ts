@@ -6,7 +6,8 @@ export declare class SignUpsService {
     private prisma;
     constructor(prisma: PrismaService);
     create(createSignUpDto: CreateSignUpDto): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
-    createQuestionnaire(id: number, createQuestionnaireDto: CreateQuestionnaireDto): import(".prisma/client").Prisma.Prisma__QuestionnaireClient<import(".prisma/client").Questionnaire, never>;
+    createQuestionnaire(id: number, createQuestionnaireDto: CreateQuestionnaireDto): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
+    createFollowup(id: number, createQuestionnaireDto: CreateQuestionnaireDto): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").SignUp & {
         questions: {
             question: string;

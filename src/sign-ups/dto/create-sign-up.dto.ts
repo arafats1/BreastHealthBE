@@ -1,5 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
+import { Interface } from "readline";
+
+interface Questionnaire {
+    question: string;
+    answer: string;
+}
+
 export class CreateSignUpDto {
     @ApiProperty()
     @IsEmail()
@@ -13,5 +20,7 @@ export class CreateSignUpDto {
     @ApiProperty()
     @IsNotEmpty()
     password: string;
+    @ApiProperty({type: Array, isArray: true})
+    questions: Questionnaire[];
       
 }

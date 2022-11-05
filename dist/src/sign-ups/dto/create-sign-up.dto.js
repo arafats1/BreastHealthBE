@@ -36,5 +36,9 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateSignUpDto.prototype, "password", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ type: Array, isArray: true }),
+    __metadata("design:type", Array)
+], CreateSignUpDto.prototype, "questions", void 0);
 exports.CreateSignUpDto = CreateSignUpDto;
 //# sourceMappingURL=create-sign-up.dto.js.map
