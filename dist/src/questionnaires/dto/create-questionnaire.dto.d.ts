@@ -1,6 +1,11 @@
 export declare class CreateQuestionnaireDto {
-    question: string;
-    answer: string;
+    gender: string;
+    ageRange: string;
+    district: string;
+    educationLevel: string;
+    breastCondition: string;
+    knowSomeoneWithBreastCondition: string;
+    yourMotivation: string;
     signUp: {
         connect: {
             id: number;

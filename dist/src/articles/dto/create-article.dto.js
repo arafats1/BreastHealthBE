@@ -9,36 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateSignUpDto = void 0;
+exports.CreateArticleDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const class_validator_1 = require("class-validator");
-class CreateSignUpDto {
+class CreateArticleDto {
 }
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], CreateSignUpDto.prototype, "email", void 0);
+], CreateArticleDto.prototype, "title", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateSignUpDto.prototype, "firstName", void 0);
+], CreateArticleDto.prototype, "description", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateSignUpDto.prototype, "lastName", void 0);
+], CreateArticleDto.prototype, "content", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateSignUpDto.prototype, "phone", void 0);
+], CreateArticleDto.prototype, "imageUrl", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateSignUpDto.prototype, "password", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Object)
-], CreateSignUpDto.prototype, "questions", void 0);
-exports.CreateSignUpDto = CreateSignUpDto;
-//# sourceMappingURL=create-sign-up.dto.js.map
+], CreateArticleDto.prototype, "link", void 0);
+exports.CreateArticleDto = CreateArticleDto;
+//# sourceMappingURL=create-article.dto.js.map

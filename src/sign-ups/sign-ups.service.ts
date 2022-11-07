@@ -15,50 +15,50 @@ export class SignUpsService {
     const salt = brypt.genSaltSync(saltOrRounds);
     const hash = brypt.hashSync(password, salt);
     createSignUpDto.password = hash;
-    let {email, firstName, lastName, phone, questions } = createSignUpDto;
-    return this.prisma.signUp.create({
+    return this.prisma.signUp.create({ 
       data: {
-        email,
-        firstName,
-        lastName,
-        phone,
-        password: hash,
+        email: createSignUpDto.email,
+        firstName: createSignUpDto.firstName,
+        lastName: createSignUpDto.lastName,
+        phone: createSignUpDto.phone,
+        password: createSignUpDto.password,
         questions: {
-          create: questions,
+          create: createSignUpDto.questions,
         },
-      },
+        
+      }
     });
   }
 
-  createQuestionnaire(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
-    return this.prisma.signUp.update({
-      where: { id: id },
-      data: {
-        questions: {
-          create: createQuestionnaireDto,
-        },
-      },
-    });
-  }
+  // createQuestionnaire(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
+  //   return this.prisma.signUp.update({
+  //     where: { id: id },
+  //     data: {
+  //       questions: {
+  //         create: createQuestionnaireDto,
+  //       },
+  //     },
+  //   });
+  // }
 
-  createFollowup(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
-    return this.prisma.signUp.update({
-      where: { id: id },
-      data: {
-        questions: {
-          create: createQuestionnaireDto,
-        },
-      },
-    });
-  }
+  // createFollowup(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
+  //   return this.prisma.signUp.update({
+  //     where: { id: id },
+  //     data: {
+  //       questions: {
+  //         create: createQuestionnaireDto,
+  //       },
+  //     },
+  //   });
+  // }
 
   findAll() {
     //Return data from signUp table, user table and its foreign key
-    return this.prisma.signUp.findMany({include:{questions:{select:{question:true, answer:true}}}});
+    return this.prisma.signUp.findMany({include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true}}}});
   }
 
   findOne(id: number) {
-    return this.prisma.signUp.findUnique( {where: {id: id},include:{questions:{select:{question:true, answer:true}}} });
+    return this.prisma.signUp.findUnique( {where: {id: id},include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true }}} });
 
   }
   findOneByEmail(email: string) {

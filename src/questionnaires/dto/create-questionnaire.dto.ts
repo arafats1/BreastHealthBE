@@ -2,17 +2,20 @@ import { ApiProperty } from "@nestjs/swagger";
 
 
 export class CreateQuestionnaireDto {
-    @ApiProperty({
-        isArray: true,
-        type: String,
-    })
-    question: string;
-
-    @ApiProperty({
-        isArray: true,
-        type: String,
-    })
-    answer: string;
+    @ApiProperty()
+    gender: string;
+    @ApiProperty()
+    ageRange: string;
+    @ApiProperty()
+    district: string;
+    @ApiProperty()
+    educationLevel: string;
+    @ApiProperty()
+    breastCondition: string;
+    @ApiProperty()
+    knowSomeoneWithBreastCondition: string;
+    @ApiProperty()
+    yourMotivation : string;
     
     
     @ApiProperty()

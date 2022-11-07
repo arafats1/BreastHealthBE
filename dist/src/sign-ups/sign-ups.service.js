@@ -23,45 +23,24 @@ let SignUpsService = class SignUpsService {
         const salt = brypt.genSaltSync(saltOrRounds);
         const hash = brypt.hashSync(password, salt);
         createSignUpDto.password = hash;
-        let { email, firstName, lastName, phone, questions } = createSignUpDto;
         return this.prisma.signUp.create({
             data: {
-                email,
-                firstName,
-                lastName,
-                phone,
-                password: hash,
+                email: createSignUpDto.email,
+                firstName: createSignUpDto.firstName,
+                lastName: createSignUpDto.lastName,
+                phone: createSignUpDto.phone,
+                password: createSignUpDto.password,
                 questions: {
-                    create: questions,
+                    create: createSignUpDto.questions,
                 },
-            },
-        });
-    }
-    createQuestionnaire(id, createQuestionnaireDto) {
-        return this.prisma.signUp.update({
-            where: { id: id },
-            data: {
-                questions: {
-                    create: createQuestionnaireDto,
-                },
-            },
-        });
-    }
-    createFollowup(id, createQuestionnaireDto) {
-        return this.prisma.signUp.update({
-            where: { id: id },
-            data: {
-                questions: {
-                    create: createQuestionnaireDto,
-                },
-            },
+            }
         });
     }
     findAll() {
-        return this.prisma.signUp.findMany({ include: { questions: { select: { question: true, answer: true } } } });
+        return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } } } });
     }
     findOne(id) {
-        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { question: true, answer: true } } } });
+        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } } } });
     }
     findOneByEmail(email) {
         return this.prisma.signUp.findUnique({ where: { email: email } });

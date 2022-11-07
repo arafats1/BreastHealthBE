@@ -32,71 +32,71 @@ export class SignUpsController {
     return signUps.map((signUp) => new SignUpEntity(signUp));
   }
 
-  @Post('users/:id/questions')
-  @ApiOperation({ summary: 'Creates a questionnaire' })
-  @ApiBody({ 
-    schema: {
-      type: 'array',
-      example: [
-        {
-          question: 'Any sweling on your left orone part of the breast?',
-          answer: 'No',
-        },
-        {
-          question: 'Have you detected any lumps?',
-          answer: 'Yes',
-        }
-      ]
-    },
-    })
-  @ApiResponse({
-    status: 201,
-    description: 'Created',
-  })
-  @ApiResponse({
-    status: 403,
-    description: 'Forbidden',
-  })
-  @ApiResponse({
-    status: 500,
-    description: 'Internal server error',
-  })
-  createQuestionnaire(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
-    return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
-  }
+  // @Post('users/:id/questions')
+  // @ApiOperation({ summary: 'Creates a questionnaire' })
+  // @ApiBody({ 
+  //   schema: {
+  //     type: 'array',
+  //     example: [
+  //       {
+  //         question: 'Any sweling on your left orone part of the breast?',
+  //         answer: 'No',
+  //       },
+  //       {
+  //         question: 'Have you detected any lumps?',
+  //         answer: 'Yes',
+  //       }
+  //     ]
+  //   },
+  //   })
+  // @ApiResponse({
+  //   status: 201,
+  //   description: 'Created',
+  // })
+  // @ApiResponse({
+  //   status: 403,
+  //   description: 'Forbidden',
+  // })
+  // @ApiResponse({
+  //   status: 500,
+  //   description: 'Internal server error',
+  // })
+  // createQuestionnaire(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
+  //   return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
+  // }
 
-  @Post('users/:id/followup')
-  @ApiOperation({ summary: 'Creates a follow up questions' })
-  @ApiBody({ 
-    schema: {
-      type: 'array',
-      example: [
-        {
-          question: 'Any sweling on your left orone part of the breast?',
-          answer: 'No',
-        },
-        {
-          question: 'Have you detected any lumps?',
-          answer: 'Yes',
-        }
-      ]
-    },
-    })
-  @ApiResponse({
-    status: 201,
-    description: 'Created',
-  })
-  @ApiResponse({
-    status: 403,
-    description: 'Forbidden',
-  })
-  @ApiResponse({
-    status: 500,
-    description: 'Internal server error',
-  })
-  createFollowup(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
-    return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
-  }
+  // @Post('users/:id/followup')
+  // @ApiOperation({ summary: 'Creates a follow up questions' })
+  // @ApiBody({ 
+  //   schema: {
+  //     type: 'array',
+  //     example: [
+  //       {
+  //         question: 'Any sweling on your left orone part of the breast?',
+  //         answer: 'No',
+  //       },
+  //       {
+  //         question: 'Have you detected any lumps?',
+  //         answer: 'Yes',
+  //       }
+  //     ]
+  //   },
+  //   })
+  // @ApiResponse({
+  //   status: 201,
+  //   description: 'Created',
+  // })
+  // @ApiResponse({
+  //   status: 403,
+  //   description: 'Forbidden',
+  // })
+  // @ApiResponse({
+  //   status: 500,
+  //   description: 'Internal server error',
+  // })
+  // createFollowup(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
+  //   return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
+  // }
 
 
   findOneByEmail(@Param('email') email: string) {

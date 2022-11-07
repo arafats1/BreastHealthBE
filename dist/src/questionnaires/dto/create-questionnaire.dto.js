@@ -14,19 +14,33 @@ const swagger_1 = require("@nestjs/swagger");
 class CreateQuestionnaireDto {
 }
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        isArray: true,
-        type: String,
-    }),
+    (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateQuestionnaireDto.prototype, "question", void 0);
+], CreateQuestionnaireDto.prototype, "gender", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        isArray: true,
-        type: String,
-    }),
+    (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateQuestionnaireDto.prototype, "answer", void 0);
+], CreateQuestionnaireDto.prototype, "ageRange", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateQuestionnaireDto.prototype, "district", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateQuestionnaireDto.prototype, "educationLevel", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateQuestionnaireDto.prototype, "breastCondition", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateQuestionnaireDto.prototype, "knowSomeoneWithBreastCondition", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateQuestionnaireDto.prototype, "yourMotivation", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Object)

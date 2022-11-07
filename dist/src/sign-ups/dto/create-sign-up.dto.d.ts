@@ -1,13 +1,16 @@
-interface Questionnaire {
-    question: string;
-    answer: string;
-}
 export declare class CreateSignUpDto {
     email: string;
     firstName: string;
     lastName: string;
     phone: string;
     password: string;
-    questions: Questionnaire[];
+    questions: {
+        gender: string;
+        ageRange: string;
+        district: string;
+        educationLevel: string;
+        breastCondition: string;
+        knowSomeoneWithBreastCondition: string;
+        yourMotivation: string;
+    };
 }
-export {};

@@ -2,10 +2,10 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
 import { Interface } from "readline";
 
-interface Questionnaire {
-    question: string;
-    answer: string;
-}
+// interface Questionnaire {
+//     question: string;
+//     answer: string;
+// }
 
 export class CreateSignUpDto {
     @ApiProperty()
@@ -20,7 +20,15 @@ export class CreateSignUpDto {
     @ApiProperty()
     @IsNotEmpty()
     password: string;
-    @ApiProperty({type: Array, isArray: true})
-    questions: Questionnaire[];
+    @ApiProperty()
+    questions: {
+        gender: string;
+        ageRange: string;
+        district: string;
+        educationLevel: string;
+        breastCondition: string;
+        knowSomeoneWithBreastCondition: string;
+        yourMotivation : string;
+    }
       
 }

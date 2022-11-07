@@ -23,8 +23,13 @@ model SignUp {
 
 model Questionnaire{
   id       Int      @id @default(autoincrement())
-  question String
-  answer   String
+  gender   String
+  ageRange String
+  district String
+  educationLevel String
+  breastCondition String
+  knowSomeoneWithBreastCondition String
+  yourMotivation String
   createdAt DateTime @default(now())
   signUp   SignUp   @relation(fields: [signUpId], references: [id])
   signUpId Int
@@ -42,4 +47,13 @@ model BreastVideo {
   title     String
   description String
   url  String
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String?
+  content  String 
+  imageUrl String?
+  link  String?
 }

@@ -119,6 +119,32 @@ __decorate([
                     example: 'User@1232450',
                     description: 'Password of the user',
                 },
+                questions: {
+                    type: 'object',
+                    properties: {
+                        gender: {
+                            type: 'string',
+                        },
+                        ageRange: {
+                            type: 'string',
+                        },
+                        district: {
+                            type: 'string',
+                        },
+                        educationLevel: {
+                            type: 'string',
+                        },
+                        breastCondition: {
+                            type: 'string',
+                        },
+                        knowSomeoneWithBreastCondition: {
+                            type: 'string',
+                        },
+                        yourMotivation: {
+                            type: 'string',
+                        }
+                    }
+                }
             },
         },
     }),
