@@ -5,6 +5,8 @@ import { UpdateSignUpDto } from './dto/update-sign-up.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { SignUpEntity } from './entities/sign-up.entity';
 import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
+import { CreateFollowupDto } from 'src/followups/dto/create-followup.dto';
+
 
 @Controller('')
 @ApiTags('Users')
@@ -32,72 +34,40 @@ export class SignUpsController {
     return signUps.map((signUp) => new SignUpEntity(signUp));
   }
 
-  // @Post('users/:id/questions')
-  // @ApiOperation({ summary: 'Creates a questionnaire' })
-  // @ApiBody({ 
-  //   schema: {
-  //     type: 'array',
-  //     example: [
-  //       {
-  //         question: 'Any sweling on your left orone part of the breast?',
-  //         answer: 'No',
-  //       },
-  //       {
-  //         question: 'Have you detected any lumps?',
-  //         answer: 'Yes',
-  //       }
-  //     ]
-  //   },
-  //   })
-  // @ApiResponse({
-  //   status: 201,
-  //   description: 'Created',
-  // })
-  // @ApiResponse({
-  //   status: 403,
-  //   description: 'Forbidden',
-  // })
-  // @ApiResponse({
-  //   status: 500,
-  //   description: 'Internal server error',
-  // })
-  // createQuestionnaire(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
-  //   return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
-  // }
+  @Post('users/:id/followups')
+  @ApiOperation({ summary: 'Create a followup question for a user' })
+  @ApiBody({ 
+    schema: {
+      type: 'object',
+      properties: {
+        swellingOnLeftOrone : {
+          type: 'string',
+          example: 'yes',
+        },
+        unUsualDischarge : {
+          type: 'string',
+          example: 'No',
+        },
+        hardSpotOnBreast : {
+          type: 'string',
+          example: 'yes',
+        },
+        lastPeriodDate : {
+          type: 'string',
+          example: '22-02-2021',	
+        },
+        daysPeriodLasted : {
+          type: 'number',
+          example: 2,
+        }
+      }
+    }
+  })
+  createFollowup(@Param('id') id: string, @Body() createFollowupDto: CreateFollowupDto) {
+    return this.signUpsService.createFollowup(+id, createFollowupDto);
+  }
 
-  // @Post('users/:id/followup')
-  // @ApiOperation({ summary: 'Creates a follow up questions' })
-  // @ApiBody({ 
-  //   schema: {
-  //     type: 'array',
-  //     example: [
-  //       {
-  //         question: 'Any sweling on your left orone part of the breast?',
-  //         answer: 'No',
-  //       },
-  //       {
-  //         question: 'Have you detected any lumps?',
-  //         answer: 'Yes',
-  //       }
-  //     ]
-  //   },
-  //   })
-  // @ApiResponse({
-  //   status: 201,
-  //   description: 'Created',
-  // })
-  // @ApiResponse({
-  //   status: 403,
-  //   description: 'Forbidden',
-  // })
-  // @ApiResponse({
-  //   status: 500,
-  //   description: 'Internal server error',
-  // })
-  // createFollowup(@Param('id') id: string, @Body() createQuestionnaireDto: CreateQuestionnaireDto) {
-  //   return this.signUpsService.createQuestionnaire(+id, createQuestionnaireDto);
-  // }
-
+  
 
   findOneByEmail(@Param('email') email: string) {
     return this.signUpsService.findOneByEmail(email);

@@ -36,6 +36,15 @@ let SignUpsService = class SignUpsService {
             }
         });
     }
+    createFollowup(id, createFollowupDto) {
+        return this.prisma.followUp.create({
+            data: Object.assign(Object.assign({}, createFollowupDto), { signUp: {
+                    connect: {
+                        id,
+                    },
+                } }),
+        });
+    }
     findAll() {
         return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } } } });
     }

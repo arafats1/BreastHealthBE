@@ -18,6 +18,7 @@ const sign_ups_service_1 = require("./sign-ups.service");
 const update_sign_up_dto_1 = require("./dto/update-sign-up.dto");
 const swagger_1 = require("@nestjs/swagger");
 const sign_up_entity_1 = require("./entities/sign-up.entity");
+const create_followup_dto_1 = require("../followups/dto/create-followup.dto");
 let SignUpsController = class SignUpsController {
     constructor(signUpsService) {
         this.signUpsService = signUpsService;
@@ -25,6 +26,9 @@ let SignUpsController = class SignUpsController {
     async findAll() {
         const signUps = await this.signUpsService.findAll();
         return signUps.map((signUp) => new sign_up_entity_1.SignUpEntity(signUp));
+    }
+    createFollowup(id, createFollowupDto) {
+        return this.signUpsService.createFollowup(+id, createFollowupDto);
     }
     findOneByEmail(email) {
         return this.signUpsService.findOneByEmail(email);
@@ -59,6 +63,42 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SignUpsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Post)('users/:id/followups'),
+    (0, swagger_1.ApiOperation)({ summary: 'Create a followup question for a user' }),
+    (0, swagger_1.ApiBody)({
+        schema: {
+            type: 'object',
+            properties: {
+                swellingOnLeftOrone: {
+                    type: 'string',
+                    example: 'yes',
+                },
+                unUsualDischarge: {
+                    type: 'string',
+                    example: 'No',
+                },
+                hardSpotOnBreast: {
+                    type: 'string',
+                    example: 'yes',
+                },
+                lastPeriodDate: {
+                    type: 'string',
+                    example: '22-02-2021',
+                },
+                daysPeriodLasted: {
+                    type: 'number',
+                    example: 2,
+                }
+            }
+        }
+    }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, create_followup_dto_1.CreateFollowupDto]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "createFollowup", null);
 __decorate([
     __param(0, (0, common_1.Param)('email')),
     __metadata("design:type", Function),

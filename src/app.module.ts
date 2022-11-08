@@ -8,6 +8,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { QuestionnairesModule } from './questionnaires/questionnaires.module';
 import { SelfchecksModule } from './selfchecks/selfchecks.module';
 import { ArticlesModule } from './articles/articles.module';
+import { FaqsModule } from './faqs/faqs.module';
+import { FollowupsModule } from './followups/followups.module';
 
 
 
@@ -15,7 +17,7 @@ import { ArticlesModule } from './articles/articles.module';
 
 
 @Module({
-  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule, ArticlesModule],
+  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule, ArticlesModule, FaqsModule, FollowupsModule, ],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_PIPE,

@@ -5,6 +5,7 @@ import { UpdateSignUpDto } from './dto/update-sign-up.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as brypt from 'bcrypt';
 import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
+import { CreateFollowupDto } from 'src/followups/dto/create-followup.dto';
 
 @Injectable()
 export class SignUpsService {
@@ -30,27 +31,19 @@ export class SignUpsService {
     });
   }
 
-  // createQuestionnaire(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
-  //   return this.prisma.signUp.update({
-  //     where: { id: id },
-  //     data: {
-  //       questions: {
-  //         create: createQuestionnaireDto,
-  //       },
-  //     },
-  //   });
-  // }
+ createFollowup(id: number,createFollowupDto: CreateFollowupDto) {
+    return this.prisma.followUp.create({
+      data: {
+        ...createFollowupDto,
+        signUp: {
+          connect: {
+            id,
+          },
+        },
+      },
 
-  // createFollowup(id:number, createQuestionnaireDto: CreateQuestionnaireDto) {
-  //   return this.prisma.signUp.update({
-  //     where: { id: id },
-  //     data: {
-  //       questions: {
-  //         create: createQuestionnaireDto,
-  //       },
-  //     },
-  //   });
-  // }
+    })
+  }
 
   findAll() {
     //Return data from signUp table, user table and its foreign key

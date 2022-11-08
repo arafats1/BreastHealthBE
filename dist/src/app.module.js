@@ -17,11 +17,13 @@ const prisma_module_1 = require("./prisma/prisma.module");
 const questionnaires_module_1 = require("./questionnaires/questionnaires.module");
 const selfchecks_module_1 = require("./selfchecks/selfchecks.module");
 const articles_module_1 = require("./articles/articles.module");
+const faqs_module_1 = require("./faqs/faqs.module");
+const followups_module_1 = require("./followups/followups.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule, selfchecks_module_1.SelfchecksModule, articles_module_1.ArticlesModule],
+        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule, selfchecks_module_1.SelfchecksModule, articles_module_1.ArticlesModule, faqs_module_1.FaqsModule, followups_module_1.FollowupsModule,],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, {
                 provide: core_1.APP_PIPE,
