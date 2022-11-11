@@ -1,7 +1,17 @@
 import { ApiProperty } from "@nestjs/swagger";
 export class CreateFaqDto {
     @ApiProperty()
-    question: string
+    wearingAbra : string
     @ApiProperty()
-    answer: string
+    doMenGetCancer: string
+    @ApiProperty()
+    antisperspirants: string
+    @ApiProperty()
+    braWithUnderwire: string
+    @ApiProperty()
+    breastCancerCauses: string
+    @ApiProperty()
+    findingAlump:string
+    @ApiProperty()
+    breastCancerSymptoms: string
 }

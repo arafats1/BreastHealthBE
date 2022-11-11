@@ -16,10 +16,30 @@ class CreateFaqDto {
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateFaqDto.prototype, "question", void 0);
+], CreateFaqDto.prototype, "wearingAbra", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateFaqDto.prototype, "answer", void 0);
+], CreateFaqDto.prototype, "doMenGetCancer", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateFaqDto.prototype, "antisperspirants", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateFaqDto.prototype, "braWithUnderwire", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateFaqDto.prototype, "breastCancerCauses", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateFaqDto.prototype, "findingAlump", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], CreateFaqDto.prototype, "breastCancerSymptoms", void 0);
 exports.CreateFaqDto = CreateFaqDto;
 //# sourceMappingURL=create-faq.dto.js.map

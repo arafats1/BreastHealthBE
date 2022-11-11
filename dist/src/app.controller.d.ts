@@ -13,7 +13,11 @@ export declare class AppController {
     constructor(authService: AuthService, signUpsService: SignUpsService, appService: AppService);
     login(req: any, authDto: AuthDto): Promise<{
         access_token: string;
+        id: any;
         email: any;
+        firstName: any;
+        lastName: any;
+        phone: any;
     }>;
     create(createSignUpDto: CreateSignUpDto): Promise<SignUpEntity>;
 }

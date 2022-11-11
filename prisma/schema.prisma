@@ -72,6 +72,11 @@ model Article {
 
 model Faq {
   id        Int      @id @default(autoincrement())
-  question     String
-  answer String
+  wearingAbra     String
+  doMenGetCancer String
+  antisperspirants String
+  braWithUnderwire String
+  breastCancerCauses String
+  findingAlump String
+  breastCancerSymptoms String
 }
