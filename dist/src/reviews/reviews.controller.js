@@ -15,15 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewsController = void 0;
 const common_1 = require("@nestjs/common");
 const reviews_service_1 = require("./reviews.service");
-const create_review_dto_1 = require("./dto/create-review.dto");
 const update_review_dto_1 = require("./dto/update-review.dto");
 const swagger_1 = require("@nestjs/swagger");
 let ReviewsController = class ReviewsController {
     constructor(reviewsService) {
         this.reviewsService = reviewsService;
-    }
-    create(createReviewDto) {
-        return this.reviewsService.create(createReviewDto);
     }
     findAll() {
         return this.reviewsService.findAll();
@@ -39,20 +35,15 @@ let ReviewsController = class ReviewsController {
     }
 };
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_review_dto_1.CreateReviewDto]),
-    __metadata("design:returntype", void 0)
-], ReviewsController.prototype, "create", null);
-__decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Gets all reviews' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], ReviewsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Gets a review by id' }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -60,6 +51,7 @@ __decorate([
 ], ReviewsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Updates a review by id' }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -68,6 +60,7 @@ __decorate([
 ], ReviewsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Deletes a review by id' }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
