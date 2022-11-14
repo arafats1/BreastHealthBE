@@ -65,9 +65,21 @@ model Article {
   id        Int      @id @default(autoincrement())
   title     String
   description String?
-  content  String 
   imageUrl String?
-  link  String?
+  link  String
+}
+
+model HealthTip {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String?
+  imageUrl String?
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  userImage     String?
+  review String
 }
 
 model Faq {
