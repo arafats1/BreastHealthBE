@@ -50,7 +50,7 @@ model FollowUp{
   unUsualDischarge String
   hardSpotOnBreast String
   lastPeriodDate String
-  daysPeriodLasted Int
+  daysPeriodLasted String
   signUp   SignUp   @relation(fields: [signUpId], references: [id])
   signUpId Int
 }

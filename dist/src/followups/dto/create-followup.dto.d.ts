@@ -3,7 +3,7 @@ export declare class CreateFollowupDto {
     unUsualDischarge: string;
     hardSpotOnBreast: string;
     lastPeriodDate: string;
-    daysPeriodLasted: number;
+    daysPeriodLasted: string;
     signUp: {
         connect: {
             id: number;

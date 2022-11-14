@@ -91,8 +91,8 @@ __decorate([
                     example: '22-02-2021',
                 },
                 daysPeriodLasted: {
-                    type: 'number',
-                    example: 2,
+                    type: 'string',
+                    example: '5',
                 }
             }
         }

@@ -9,7 +9,7 @@ export class CreateFollowupDto {
     @ApiProperty()
     lastPeriodDate : string
     @ApiProperty()
-    daysPeriodLasted : number
+    daysPeriodLasted : string
     @ApiProperty()
     signUp :{
         connect:{

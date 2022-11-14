@@ -31,7 +31,7 @@ __decorate([
 ], CreateFollowupDto.prototype, "lastPeriodDate", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], CreateFollowupDto.prototype, "daysPeriodLasted", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
