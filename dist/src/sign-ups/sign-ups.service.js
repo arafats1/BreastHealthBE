@@ -45,11 +45,20 @@ let SignUpsService = class SignUpsService {
                 } }),
         });
     }
+    createReview(id, createReviewDto) {
+        return this.prisma.review.create({
+            data: Object.assign(Object.assign({}, createReviewDto), { signUp: {
+                    connect: {
+                        id,
+                    },
+                } }),
+        });
+    }
     findAll() {
-        return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } } } });
+        return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } } } });
     }
     findOne(id) {
-        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } } } });
+        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } } } });
     }
     findOneByEmail(email) {
         return this.prisma.signUp.findUnique({ where: { email: email } });

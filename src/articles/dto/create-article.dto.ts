@@ -5,8 +5,6 @@ export class CreateArticleDto {
     @ApiProperty()
     description: string
     @ApiProperty()
-    content : string
-    @ApiProperty()
     imageUrl: string
     @ApiProperty()
     link : string

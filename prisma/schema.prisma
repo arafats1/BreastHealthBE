@@ -19,6 +19,7 @@ model SignUp {
   updatedAt DateTime @default(now())
   questions  Questionnaire[]
   followUps  FollowUp[]
+  reviews  Review[]
 
 }
 
@@ -78,7 +79,8 @@ model HealthTip {
 
 model Review {
   id        Int      @id @default(autoincrement())
-  userImage     String?
+  signUp   SignUp   @relation(fields: [signUpId], references: [id])
+  signUpId Int
   review String
 }
 

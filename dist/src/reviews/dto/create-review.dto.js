@@ -9,25 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateArticleDto = void 0;
+exports.CreateReviewDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class CreateArticleDto {
+class CreateReviewDto {
 }
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateArticleDto.prototype, "title", void 0);
+], CreateReviewDto.prototype, "review", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], CreateArticleDto.prototype, "description", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], CreateArticleDto.prototype, "imageUrl", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], CreateArticleDto.prototype, "link", void 0);
-exports.CreateArticleDto = CreateArticleDto;
-//# sourceMappingURL=create-article.dto.js.map
+    __metadata("design:type", Object)
+], CreateReviewDto.prototype, "signUp", void 0);
+exports.CreateReviewDto = CreateReviewDto;
+//# sourceMappingURL=create-review.dto.js.map

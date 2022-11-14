@@ -19,6 +19,7 @@ const update_sign_up_dto_1 = require("./dto/update-sign-up.dto");
 const swagger_1 = require("@nestjs/swagger");
 const sign_up_entity_1 = require("./entities/sign-up.entity");
 const create_followup_dto_1 = require("../followups/dto/create-followup.dto");
+const create_review_dto_1 = require("../reviews/dto/create-review.dto");
 let SignUpsController = class SignUpsController {
     constructor(signUpsService) {
         this.signUpsService = signUpsService;
@@ -29,6 +30,9 @@ let SignUpsController = class SignUpsController {
     }
     createFollowup(id, createFollowupDto) {
         return this.signUpsService.createFollowup(+id, createFollowupDto);
+    }
+    createReview(id, createReviewDto) {
+        return this.signUpsService.createReview(+id, createReviewDto);
     }
     findOneByEmail(email) {
         return this.signUpsService.findOneByEmail(email);
@@ -99,6 +103,26 @@ __decorate([
     __metadata("design:paramtypes", [String, create_followup_dto_1.CreateFollowupDto]),
     __metadata("design:returntype", void 0)
 ], SignUpsController.prototype, "createFollowup", null);
+__decorate([
+    (0, common_1.Post)('users/:id/reviews'),
+    (0, swagger_1.ApiOperation)({ summary: 'Create a review for a user' }),
+    (0, swagger_1.ApiBody)({
+        schema: {
+            type: 'object',
+            properties: {
+                review: {
+                    type: 'string',
+                    example: 'This is a review',
+                }
+            }
+        }
+    }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, create_review_dto_1.CreateReviewDto]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "createReview", null);
 __decorate([
     __param(0, (0, common_1.Param)('email')),
     __metadata("design:type", Function),

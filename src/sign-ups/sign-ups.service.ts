@@ -6,6 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import * as brypt from 'bcrypt';
 import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
 import { CreateFollowupDto } from 'src/followups/dto/create-followup.dto';
+import { CreateReviewDto } from 'src/reviews/dto/create-review.dto';
 
 @Injectable()
 export class SignUpsService {
@@ -45,13 +46,26 @@ export class SignUpsService {
     })
   }
 
+  createReview(id: number, createReviewDto: CreateReviewDto) {
+    return this.prisma.review.create({
+      data: {
+        ...createReviewDto,
+        signUp: {
+          connect: {
+            id,
+          },
+        },
+      },
+    });
+  }
+
   findAll() {
     //Return data from signUp table, user table and its foreign key
-    return this.prisma.signUp.findMany({include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true}}}});
+    return this.prisma.signUp.findMany({include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true}}, reviews:{select:{review:true}}}});
   }
 
   findOne(id: number) {
-    return this.prisma.signUp.findUnique( {where: {id: id},include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true }}} });
+    return this.prisma.signUp.findUnique( {where: {id: id},include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true }}, reviews:{select:{review:true}}} });
 
   }
   findOneByEmail(email: string) {

@@ -6,6 +6,7 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { SignUpEntity } from './entities/sign-up.entity';
 import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
 import { CreateFollowupDto } from 'src/followups/dto/create-followup.dto';
+import { CreateReviewDto } from 'src/reviews/dto/create-review.dto';
 
 
 @Controller('')
@@ -65,6 +66,23 @@ export class SignUpsController {
   })
   createFollowup(@Param('id') id: string, @Body() createFollowupDto: CreateFollowupDto) {
     return this.signUpsService.createFollowup(+id, createFollowupDto);
+  }
+
+  @Post('users/:id/reviews')
+  @ApiOperation({ summary: 'Create a review for a user' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        review: {
+          type: 'string',
+          example: 'This is a review',
+        }
+      }
+    }
+  })
+  createReview(@Param('id') id: string, @Body() createReviewDto: CreateReviewDto) {
+    return this.signUpsService.createReview(+id, createReviewDto);
   }
 
   
