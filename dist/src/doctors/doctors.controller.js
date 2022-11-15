@@ -12,76 +12,77 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HealthtipsController = void 0;
+exports.DoctorsController = void 0;
 const common_1 = require("@nestjs/common");
-const healthtips_service_1 = require("./healthtips.service");
-const create_healthtip_dto_1 = require("./dto/create-healthtip.dto");
-const update_healthtip_dto_1 = require("./dto/update-healthtip.dto");
 const swagger_1 = require("@nestjs/swagger");
-let HealthtipsController = class HealthtipsController {
-    constructor(healthtipsService) {
-        this.healthtipsService = healthtipsService;
+const doctors_service_1 = require("./doctors.service");
+const create_doctor_dto_1 = require("./dto/create-doctor.dto");
+const update_doctor_dto_1 = require("./dto/update-doctor.dto");
+let DoctorsController = class DoctorsController {
+    constructor(doctorsService) {
+        this.doctorsService = doctorsService;
     }
-    create(createHealthtipDto) {
-        return this.healthtipsService.create(createHealthtipDto);
+    create(createDoctorDto) {
+        return this.doctorsService.create(createDoctorDto);
     }
     findAll() {
-        return this.healthtipsService.findAll();
+        return this.doctorsService.findAll();
     }
     findOne(id) {
-        return this.healthtipsService.findOne(+id);
+        return this.doctorsService.findOne(+id);
     }
-    update(id, updateHealthtipDto) {
-        return this.healthtipsService.update(+id, updateHealthtipDto);
+    update(id, updateDoctorDto) {
+        return this.doctorsService.update(+id, updateDoctorDto);
     }
     remove(id) {
-        return this.healthtipsService.remove(+id);
+        return this.doctorsService.remove(+id);
     }
 };
 __decorate([
     (0, common_1.Post)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Posts a new health tip' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Post a new doctor' }),
+    (0, swagger_1.ApiBody)({ type: create_doctor_dto_1.CreateDoctorDto }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_healthtip_dto_1.CreateHealthtipDto]),
+    __metadata("design:paramtypes", [create_doctor_dto_1.CreateDoctorDto]),
     __metadata("design:returntype", void 0)
-], HealthtipsController.prototype, "create", null);
+], DoctorsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Gets all health tips' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Get all doctors' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], HealthtipsController.prototype, "findAll", null);
+], DoctorsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    (0, swagger_1.ApiOperation)({ summary: 'Gets a health tip by id' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Gets a doctor by id' }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], HealthtipsController.prototype, "findOne", null);
+], DoctorsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
-    (0, swagger_1.ApiOperation)({ summary: 'Updates a health tip by id' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Updates a doctor by id' }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_healthtip_dto_1.UpdateHealthtipDto]),
+    __metadata("design:paramtypes", [String, update_doctor_dto_1.UpdateDoctorDto]),
     __metadata("design:returntype", void 0)
-], HealthtipsController.prototype, "update", null);
+], DoctorsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
-    (0, swagger_1.ApiOperation)({ summary: 'Deletes a health tip by id' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Deletes a doctor by id' }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], HealthtipsController.prototype, "remove", null);
-HealthtipsController = __decorate([
-    (0, common_1.Controller)('healthtips'),
-    (0, swagger_1.ApiTags)('Health Tips'),
-    __metadata("design:paramtypes", [healthtips_service_1.HealthtipsService])
-], HealthtipsController);
-exports.HealthtipsController = HealthtipsController;
-//# sourceMappingURL=healthtips.controller.js.map
+], DoctorsController.prototype, "remove", null);
+DoctorsController = __decorate([
+    (0, common_1.Controller)('doctors'),
+    (0, swagger_1.ApiTags)('Doctors'),
+    __metadata("design:paramtypes", [doctors_service_1.DoctorsService])
+], DoctorsController);
+exports.DoctorsController = DoctorsController;
+//# sourceMappingURL=doctors.controller.js.map

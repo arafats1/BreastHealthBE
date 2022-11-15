@@ -2,11 +2,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
 import { Interface } from "readline";
 
-// interface Questionnaire {
-//     question: string;
-//     answer: string;
-// }
-
 export class CreateSignUpDto {
     @ApiProperty()
     @IsEmail()

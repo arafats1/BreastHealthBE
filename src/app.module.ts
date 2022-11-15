@@ -12,6 +12,7 @@ import { FaqsModule } from './faqs/faqs.module';
 import { FollowupsModule } from './followups/followups.module';
 import { HealthtipsModule } from './healthtips/healthtips.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import { DoctorsModule } from './doctors/doctors.module';
 
 
 
@@ -19,7 +20,7 @@ import { ReviewsModule } from './reviews/reviews.module';
 
 
 @Module({
-  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule, ArticlesModule, FaqsModule, FollowupsModule, HealthtipsModule, ReviewsModule, ],
+  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule, ArticlesModule, FaqsModule, FollowupsModule, HealthtipsModule, ReviewsModule, DoctorsModule, ],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_PIPE,
