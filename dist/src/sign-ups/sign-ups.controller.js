@@ -31,6 +31,12 @@ let SignUpsController = class SignUpsController {
     createFollowup(id, createFollowupDto) {
         return this.signUpsService.createFollowup(+id, createFollowupDto);
     }
+    findFollowups(id) {
+        return this.signUpsService.findFollowups(+id);
+    }
+    findReviews(id) {
+        return this.signUpsService.findReviews(+id);
+    }
     createReview(id, createReviewDto) {
         return this.signUpsService.createReview(+id, createReviewDto);
     }
@@ -103,6 +109,22 @@ __decorate([
     __metadata("design:paramtypes", [String, create_followup_dto_1.CreateFollowupDto]),
     __metadata("design:returntype", void 0)
 ], SignUpsController.prototype, "createFollowup", null);
+__decorate([
+    (0, common_1.Get)('users/:id/followups'),
+    (0, swagger_1.ApiOperation)({ summary: 'Displays all followups for a user' }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "findFollowups", null);
+__decorate([
+    (0, common_1.Get)('users/:id/reviews'),
+    (0, swagger_1.ApiOperation)({ summary: 'Displays all reviews for a user' }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "findReviews", null);
 __decorate([
     (0, common_1.Post)('users/:id/reviews'),
     (0, swagger_1.ApiOperation)({ summary: 'Create a review for a user' }),

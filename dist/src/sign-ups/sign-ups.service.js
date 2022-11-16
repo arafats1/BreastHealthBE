@@ -54,11 +54,25 @@ let SignUpsService = class SignUpsService {
                 } }),
         });
     }
+    findFollowups(id) {
+        return this.prisma.followUp.findMany({
+            where: {
+                signUpId: id,
+            },
+        });
+    }
+    findReviews(id) {
+        return this.prisma.review.findMany({
+            where: {
+                signUpId: id,
+            },
+        });
+    }
     findAll() {
-        return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } } } });
+        return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } }, followUps: { select: { swellingOnLeftOrone: true, unUsualDischarge: true, hardSpotOnBreast: true, lastPeriodDate: true, daysPeriodLasted: true } } } });
     }
     findOne(id) {
-        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } } } });
+        return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } }, followUps: { select: { swellingOnLeftOrone: true, unUsualDischarge: true, hardSpotOnBreast: true, lastPeriodDate: true, daysPeriodLasted: true } } } });
     }
     findOneByEmail(email) {
         return this.prisma.signUp.findUnique({ where: { email: email } });

@@ -68,6 +68,18 @@ export class SignUpsController {
     return this.signUpsService.createFollowup(+id, createFollowupDto);
   }
 
+  @Get('users/:id/followups')
+  @ApiOperation({ summary: 'Displays all followups for a user' })
+  findFollowups(@Param('id') id: string) {
+    return this.signUpsService.findFollowups(+id);
+  }
+
+  @Get('users/:id/reviews')
+  @ApiOperation({ summary: 'Displays all reviews for a user' })
+  findReviews(@Param('id') id: string) {
+    return this.signUpsService.findReviews(+id);
+  }
+
   @Post('users/:id/reviews')
   @ApiOperation({ summary: 'Create a review for a user' })
   @ApiBody({

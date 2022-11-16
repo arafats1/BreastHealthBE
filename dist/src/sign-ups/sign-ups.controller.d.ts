@@ -8,6 +8,8 @@ export declare class SignUpsController {
     constructor(signUpsService: SignUpsService);
     findAll(): Promise<SignUpEntity[]>;
     createFollowup(id: string, createFollowupDto: CreateFollowupDto): import(".prisma/client").Prisma.Prisma__FollowUpClient<import(".prisma/client").FollowUp, never>;
+    findFollowups(id: string): import(".prisma/client").PrismaPromise<import(".prisma/client").FollowUp[]>;
+    findReviews(id: string): import(".prisma/client").PrismaPromise<import(".prisma/client").Review[]>;
     createReview(id: string, createReviewDto: CreateReviewDto): import(".prisma/client").Prisma.Prisma__ReviewClient<import(".prisma/client").Review, never>;
     findOneByEmail(email: string): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
     findDashboard(id: string): Promise<SignUpEntity>;

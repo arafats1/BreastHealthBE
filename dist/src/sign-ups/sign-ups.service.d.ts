@@ -9,6 +9,8 @@ export declare class SignUpsService {
     create(createSignUpDto: CreateSignUpDto): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
     createFollowup(id: number, createFollowupDto: CreateFollowupDto): import(".prisma/client").Prisma.Prisma__FollowUpClient<import(".prisma/client").FollowUp, never>;
     createReview(id: number, createReviewDto: CreateReviewDto): import(".prisma/client").Prisma.Prisma__ReviewClient<import(".prisma/client").Review, never>;
+    findFollowups(id: number): import(".prisma/client").PrismaPromise<import(".prisma/client").FollowUp[]>;
+    findReviews(id: number): import(".prisma/client").PrismaPromise<import(".prisma/client").Review[]>;
     findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").SignUp & {
         questions: {
             gender: string;
@@ -18,6 +20,13 @@ export declare class SignUpsService {
             breastCondition: string;
             knowSomeoneWithBreastCondition: string;
             yourMotivation: string;
+        }[];
+        followUps: {
+            swellingOnLeftOrone: string;
+            unUsualDischarge: string;
+            hardSpotOnBreast: string;
+            lastPeriodDate: string;
+            daysPeriodLasted: string;
         }[];
         reviews: {
             review: string;
@@ -32,6 +41,13 @@ export declare class SignUpsService {
             breastCondition: string;
             knowSomeoneWithBreastCondition: string;
             yourMotivation: string;
+        }[];
+        followUps: {
+            swellingOnLeftOrone: string;
+            unUsualDischarge: string;
+            hardSpotOnBreast: string;
+            lastPeriodDate: string;
+            daysPeriodLasted: string;
         }[];
         reviews: {
             review: string;
