@@ -7,10 +7,12 @@ import * as brypt from 'bcrypt';
 import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
 import { CreateFollowupDto } from 'src/followups/dto/create-followup.dto';
 import { CreateReviewDto } from 'src/reviews/dto/create-review.dto';
+import { CreateUploadDto } from 'src/uploads/dto/create-upload.dto';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class SignUpsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private cloudinary: CloudinaryService) {}
   create(createSignUpDto: CreateSignUpDto) {
     const saltOrRounds = 10;
     const password = createSignUpDto.password;
@@ -32,6 +34,35 @@ export class SignUpsService {
     });
   }
 
+  async uploadImageToCloudinary(id: number, file: Express.Multer.File) {
+    const result = await this.cloudinary.uploadFile(file);
+    if (result.error) {
+      return result;
+    }
+    return this.prisma.upload.create({
+      data: {
+        url: result.url,
+        signUp: {
+          connect: {
+            id,
+          }
+        }
+      },
+    });
+
+  }
+
+  findUploads(id: number) {
+    return this.prisma.signUp.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        uploads: true,
+      },
+    });
+  }
+
  createFollowup(id: number,createFollowupDto: CreateFollowupDto) {
     return this.prisma.followUp.create({
       data: {
@@ -45,6 +76,8 @@ export class SignUpsService {
 
     })
   }
+
+ 
 
   createReview(id: number, createReviewDto: CreateReviewDto) {
     return this.prisma.review.create({

@@ -13,9 +13,11 @@ exports.SignUpsService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma/prisma.service");
 const brypt = require("bcrypt");
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let SignUpsService = class SignUpsService {
-    constructor(prisma) {
+    constructor(prisma, cloudinary) {
         this.prisma = prisma;
+        this.cloudinary = cloudinary;
     }
     create(createSignUpDto) {
         const saltOrRounds = 10;
@@ -34,6 +36,32 @@ let SignUpsService = class SignUpsService {
                     create: createSignUpDto.questions,
                 },
             }
+        });
+    }
+    async uploadImageToCloudinary(id, file) {
+        const result = await this.cloudinary.uploadFile(file);
+        if (result.error) {
+            return result;
+        }
+        return this.prisma.upload.create({
+            data: {
+                url: result.url,
+                signUp: {
+                    connect: {
+                        id,
+                    }
+                }
+            },
+        });
+    }
+    findUploads(id) {
+        return this.prisma.signUp.findUnique({
+            where: {
+                id,
+            },
+            select: {
+                uploads: true,
+            },
         });
     }
     createFollowup(id, createFollowupDto) {
@@ -86,7 +114,7 @@ let SignUpsService = class SignUpsService {
 };
 SignUpsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService, cloudinary_service_1.CloudinaryService])
 ], SignUpsService);
 exports.SignUpsService = SignUpsService;
 //# sourceMappingURL=sign-ups.service.js.map

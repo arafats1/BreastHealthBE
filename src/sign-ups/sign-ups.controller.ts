@@ -1,12 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ClassSerializerInterceptor, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ClassSerializerInterceptor, UseInterceptors, UploadedFile, } from '@nestjs/common';
 import { SignUpsService } from './sign-ups.service';
 import { CreateSignUpDto } from './dto/create-sign-up.dto';
 import { UpdateSignUpDto } from './dto/update-sign-up.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { SignUpEntity } from './entities/sign-up.entity';
-import { CreateQuestionnaireDto } from 'src/questionnaires/dto/create-questionnaire.dto';
 import { CreateFollowupDto } from 'src/followups/dto/create-followup.dto';
 import { CreateReviewDto } from 'src/reviews/dto/create-review.dto';
+import { CreateUploadDto } from 'src/uploads/dto/create-upload.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 
 @Controller('')
@@ -73,6 +74,20 @@ export class SignUpsController {
   findFollowups(@Param('id') id: string) {
     return this.signUpsService.findFollowups(+id);
   }
+
+  @Post('users/:id/uploads')
+  @ApiOperation({ summary: 'Uploads a file for a user' })
+  @UseInterceptors(FileInterceptor('file'))
+  uploadImage(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
+    return this.signUpsService.uploadImageToCloudinary(+id, file);
+  }
+
+  @Get('users/:id/uploads')
+  @ApiOperation({ summary: 'Displays all uploads for a user' })
+  findUploads(@Param('id') id: string) {
+    return this.signUpsService.findUploads(+id);
+  }
+
 
   @Get('users/:id/reviews')
   @ApiOperation({ summary: 'Displays all reviews for a user' })

@@ -20,6 +20,7 @@ model SignUp {
   questions  Questionnaire[]
   followUps  FollowUp[]
   reviews  Review[]
+  uploads  Upload[]
 
 }
 
@@ -104,5 +105,12 @@ model Doctor  {
   address String
   hospital String
   practiceId String
+}
+
+model Upload {
+  id        Int      @id @default(autoincrement())
+  url String
+  signUp   SignUp   @relation(fields: [signUpId], references: [id])
+  signUpId Int
 }
 

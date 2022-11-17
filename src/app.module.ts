@@ -13,6 +13,7 @@ import { FollowupsModule } from './followups/followups.module';
 import { HealthtipsModule } from './healthtips/healthtips.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { DoctorsModule } from './doctors/doctors.module';
+import { UploadsModule } from './uploads/uploads.module';
 
 
 
@@ -20,7 +21,7 @@ import { DoctorsModule } from './doctors/doctors.module';
 
 
 @Module({
-  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule, ArticlesModule, FaqsModule, FollowupsModule, HealthtipsModule, ReviewsModule, DoctorsModule, ],
+  imports: [PrismaModule,SignUpsModule,AuthModule, QuestionnairesModule, SelfchecksModule, ArticlesModule, FaqsModule, FollowupsModule, HealthtipsModule, ReviewsModule, DoctorsModule, UploadsModule, ],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_PIPE,

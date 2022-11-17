@@ -10,6 +10,7 @@ import { UsePipes } from '@nestjs/common';
 import { SignUpEntity } from './sign-ups/entities/sign-up.entity';
 import { AppService } from './app.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'express';
 
 @ApiTags('auth')
 @Controller('auth')    

@@ -20,6 +20,7 @@ const swagger_1 = require("@nestjs/swagger");
 const sign_up_entity_1 = require("./entities/sign-up.entity");
 const create_followup_dto_1 = require("../followups/dto/create-followup.dto");
 const create_review_dto_1 = require("../reviews/dto/create-review.dto");
+const platform_express_1 = require("@nestjs/platform-express");
 let SignUpsController = class SignUpsController {
     constructor(signUpsService) {
         this.signUpsService = signUpsService;
@@ -33,6 +34,12 @@ let SignUpsController = class SignUpsController {
     }
     findFollowups(id) {
         return this.signUpsService.findFollowups(+id);
+    }
+    uploadImage(id, file) {
+        return this.signUpsService.uploadImageToCloudinary(+id, file);
+    }
+    findUploads(id) {
+        return this.signUpsService.findUploads(+id);
     }
     findReviews(id) {
         return this.signUpsService.findReviews(+id);
@@ -117,6 +124,24 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], SignUpsController.prototype, "findFollowups", null);
+__decorate([
+    (0, common_1.Post)('users/:id/uploads'),
+    (0, swagger_1.ApiOperation)({ summary: 'Uploads a file for a user' }),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "uploadImage", null);
+__decorate([
+    (0, common_1.Get)('users/:id/uploads'),
+    (0, swagger_1.ApiOperation)({ summary: 'Displays all uploads for a user' }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], SignUpsController.prototype, "findUploads", null);
 __decorate([
     (0, common_1.Get)('users/:id/reviews'),
     (0, swagger_1.ApiOperation)({ summary: 'Displays all reviews for a user' }),

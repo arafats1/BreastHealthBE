@@ -6,21 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SignUpsModule = void 0;
+exports.CloudinaryModule = void 0;
 const common_1 = require("@nestjs/common");
-const sign_ups_service_1 = require("./sign-ups.service");
-const sign_ups_controller_1 = require("./sign-ups.controller");
-const prisma_module_1 = require("../prisma/prisma.module");
-const cloudinary_module_1 = require("../cloudinary/cloudinary.module");
-let SignUpsModule = class SignUpsModule {
+const cloudinary_provider_1 = require("./cloudinary.provider");
+const cloudinary_service_1 = require("./cloudinary.service");
+let CloudinaryModule = class CloudinaryModule {
 };
-SignUpsModule = __decorate([
+CloudinaryModule = __decorate([
     (0, common_1.Module)({
-        controllers: [sign_ups_controller_1.SignUpsController],
-        providers: [sign_ups_service_1.SignUpsService],
-        imports: [cloudinary_module_1.CloudinaryModule, prisma_module_1.PrismaModule],
-        exports: [sign_ups_service_1.SignUpsService],
+        providers: [cloudinary_provider_1.CloudinaryProvider, cloudinary_service_1.CloudinaryService],
+        exports: [cloudinary_provider_1.CloudinaryProvider, cloudinary_service_1.CloudinaryService],
     })
-], SignUpsModule);
-exports.SignUpsModule = SignUpsModule;
-//# sourceMappingURL=sign-ups.module.js.map
+], CloudinaryModule);
+exports.CloudinaryModule = CloudinaryModule;
+//# sourceMappingURL=cloudinary.module.js.map

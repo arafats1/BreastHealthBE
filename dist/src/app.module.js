@@ -22,11 +22,12 @@ const followups_module_1 = require("./followups/followups.module");
 const healthtips_module_1 = require("./healthtips/healthtips.module");
 const reviews_module_1 = require("./reviews/reviews.module");
 const doctors_module_1 = require("./doctors/doctors.module");
+const uploads_module_1 = require("./uploads/uploads.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule, selfchecks_module_1.SelfchecksModule, articles_module_1.ArticlesModule, faqs_module_1.FaqsModule, followups_module_1.FollowupsModule, healthtips_module_1.HealthtipsModule, reviews_module_1.ReviewsModule, doctors_module_1.DoctorsModule,],
+        imports: [prisma_module_1.PrismaModule, sign_ups_module_1.SignUpsModule, auth_module_1.AuthModule, questionnaires_module_1.QuestionnairesModule, selfchecks_module_1.SelfchecksModule, articles_module_1.ArticlesModule, faqs_module_1.FaqsModule, followups_module_1.FollowupsModule, healthtips_module_1.HealthtipsModule, reviews_module_1.ReviewsModule, doctors_module_1.DoctorsModule, uploads_module_1.UploadsModule,],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, {
                 provide: core_1.APP_PIPE,
