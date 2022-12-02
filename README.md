@@ -1,1 +1,1 @@
-# api that connects to the breast cancer checking application front end, Developed with NestJs, NodeJS, TypeORM, PostgreSQL and database hosted on AWS
+# Breast cancer checking application Backend. Developed with NestJs, NodeJS, TypeORM, PostgreSQL and database hosted on AWS
