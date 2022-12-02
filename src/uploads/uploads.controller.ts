@@ -13,11 +13,6 @@ export class UploadsController {
   //   return this.uploadsService.create(createUploadDto);
   // }
 
-  @Post('upload')
-  @UseInterceptors(FileInterceptor('file'))
-  uploadImage(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
-    return this.uploadsService.uploadImageToCloudinary(+id, file);
-  }
 
   @Get()
   findAll() {

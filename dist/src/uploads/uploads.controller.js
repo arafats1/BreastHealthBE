@@ -8,34 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UploadsController = void 0;
 const common_1 = require("@nestjs/common");
 const uploads_service_1 = require("./uploads.service");
-const platform_express_1 = require("@nestjs/platform-express");
 let UploadsController = class UploadsController {
     constructor(uploadsService) {
         this.uploadsService = uploadsService;
-    }
-    uploadImage(id, file) {
-        return this.uploadsService.uploadImageToCloudinary(+id, file);
     }
     findAll() {
         return this.uploadsService.findAll();
     }
 };
-__decorate([
-    (0, common_1.Post)('upload'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('file')),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.UploadedFile)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], UploadsController.prototype, "uploadImage", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
