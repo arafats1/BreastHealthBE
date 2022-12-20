@@ -12,14 +12,14 @@ import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class SignUpsService {
-  constructor(private prisma: PrismaService, private cloudinary: CloudinaryService) {}
+  constructor(private prisma: PrismaService, private cloudinary: CloudinaryService) { }
   create(createSignUpDto: CreateSignUpDto) {
     const saltOrRounds = 10;
     const password = createSignUpDto.password;
     const salt = brypt.genSaltSync(saltOrRounds);
     const hash = brypt.hashSync(password, salt);
     createSignUpDto.password = hash;
-    return this.prisma.signUp.create({ 
+    return this.prisma.signUp.create({
       data: {
         email: createSignUpDto.email,
         firstName: createSignUpDto.firstName,
@@ -29,7 +29,6 @@ export class SignUpsService {
         questions: {
           create: createSignUpDto.questions,
         },
-        
       }
     });
   }
@@ -49,7 +48,6 @@ export class SignUpsService {
         }
       },
     });
-
   }
 
   findUploads(id: number) {
@@ -63,7 +61,7 @@ export class SignUpsService {
     });
   }
 
- createFollowup(id: number,createFollowupDto: CreateFollowupDto) {
+  createFollowup(id: number, createFollowupDto: CreateFollowupDto) {
     return this.prisma.followUp.create({
       data: {
         ...createFollowupDto,
@@ -73,11 +71,8 @@ export class SignUpsService {
           },
         },
       },
-
     })
   }
-
- 
 
   createReview(id: number, createReviewDto: CreateReviewDto) {
     return this.prisma.review.create({
@@ -110,17 +105,17 @@ export class SignUpsService {
 
   findAll() {
     //Return data from signUp table, user table and its foreign key
-    return this.prisma.signUp.findMany({include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true}}, reviews:{select:{review:true}}, followUps:{select:{swellingOnLeftOrone:true, unUsualDischarge:true, hardSpotOnBreast:true, lastPeriodDate:true, daysPeriodLasted:true}}}});
+    return this.prisma.signUp.findMany({ include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } }, followUps: { select: { swellingOnLeftOrone: true, unUsualDischarge: true, hardSpotOnBreast: true, lastPeriodDate: true, daysPeriodLasted: true } } } });
   }
 
   findOne(id: number) {
-    return this.prisma.signUp.findUnique( {where: {id: id},include:{questions:{select:{gender:true, ageRange:true, district:true, educationLevel:true, breastCondition:true, knowSomeoneWithBreastCondition:true, yourMotivation:true }}, reviews:{select:{review:true}},followUps:{select:{swellingOnLeftOrone:true, unUsualDischarge:true, hardSpotOnBreast:true, lastPeriodDate:true, daysPeriodLasted:true}}} });
+    return this.prisma.signUp.findUnique({ where: { id: id }, include: { questions: { select: { gender: true, ageRange: true, district: true, educationLevel: true, breastCondition: true, knowSomeoneWithBreastCondition: true, yourMotivation: true } }, reviews: { select: { review: true } }, followUps: { select: { swellingOnLeftOrone: true, unUsualDischarge: true, hardSpotOnBreast: true, lastPeriodDate: true, daysPeriodLasted: true } } } });
 
   }
   findOneByEmail(email: string) {
     return this.prisma.signUp.findUnique({ where: { email: email } });
   }
- 
+
   update(id: number, updateSignUpDto: UpdateSignUpDto) {
     return this.prisma.signUp.update({ where: { id }, data: updateSignUpDto });
   }

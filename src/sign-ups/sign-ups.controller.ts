@@ -13,23 +13,23 @@ import { FileInterceptor } from '@nestjs/platform-express';
 @Controller('')
 @ApiTags('Users')
 export class SignUpsController {
-  
-  constructor(private readonly signUpsService: SignUpsService) {}
+
+  constructor(private readonly signUpsService: SignUpsService) { }
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('users')
   @ApiOperation({ summary: 'Displays all users of the system' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'Successful', 
+  @ApiResponse({
+    status: 200,
+    description: 'Successful',
   })
-  @ApiResponse({ 
-    status: 403, 
-    description: 'Forbidden', 
+  @ApiResponse({
+    status: 403,
+    description: 'Forbidden',
   })
-  @ApiResponse({ 
-    status: 500, 
-    description: 'Internal server error', 
+  @ApiResponse({
+    status: 500,
+    description: 'Internal server error',
   })
   async findAll(): Promise<SignUpEntity[]> {
     const signUps = await this.signUpsService.findAll();
@@ -38,27 +38,27 @@ export class SignUpsController {
 
   @Post('users/:id/followups')
   @ApiOperation({ summary: 'Create a followup question for a user' })
-  @ApiBody({ 
+  @ApiBody({
     schema: {
       type: 'object',
       properties: {
-        swellingOnLeftOrone : {
+        swellingOnLeftOrone: {
           type: 'string',
           example: 'yes',
         },
-        unUsualDischarge : {
+        unUsualDischarge: {
           type: 'string',
           example: 'No',
         },
-        hardSpotOnBreast : {
+        hardSpotOnBreast: {
           type: 'string',
           example: 'yes',
         },
-        lastPeriodDate : {
+        lastPeriodDate: {
           type: 'string',
-          example: '22-02-2021',	
+          example: '22-02-2021',
         },
-        daysPeriodLasted : {
+        daysPeriodLasted: {
           type: 'string',
           example: '5',
         }
@@ -112,7 +112,7 @@ export class SignUpsController {
     return this.signUpsService.createReview(+id, createReviewDto);
   }
 
-  
+
 
   findOneByEmail(@Param('email') email: string) {
     return this.signUpsService.findOneByEmail(email);
@@ -120,17 +120,17 @@ export class SignUpsController {
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('users/:id')
   @ApiOperation({ summary: 'Get user by id' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'Successful', 
+  @ApiResponse({
+    status: 200,
+    description: 'Successful',
   })
-  @ApiResponse({ 
-    status: 403, 
-    description: 'Forbidden', 
+  @ApiResponse({
+    status: 403,
+    description: 'Forbidden',
   })
-  @ApiResponse({ 
-    status: 500, 
-    description: 'Internal server error', 
+  @ApiResponse({
+    status: 500,
+    description: 'Internal server error',
   })
   async findDashboard(@Param('id') id: string): Promise<SignUpEntity> {
     return new SignUpEntity(
@@ -142,9 +142,9 @@ export class SignUpsController {
 
   @Patch('users/:id')
   @ApiOperation({ summary: 'Update specific user information' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'Successful', 
+  @ApiResponse({
+    status: 200,
+    description: 'Successful',
   })
   @ApiResponse({
     status: 201,
@@ -154,13 +154,13 @@ export class SignUpsController {
     status: 401,
     description: 'Unauthorized',
   })
-  @ApiResponse({ 
-    status: 403, 
-    description: 'Forbidden', 
+  @ApiResponse({
+    status: 403,
+    description: 'Forbidden',
   })
-  @ApiResponse({ 
-    status: 500, 
-    description: 'Internal server error', 
+  @ApiResponse({
+    status: 500,
+    description: 'Internal server error',
   })
   update(@Param('id') id: string, @Body() updateSignUpDto: UpdateSignUpDto) {
     return this.signUpsService.update(+id, updateSignUpDto);
@@ -168,21 +168,21 @@ export class SignUpsController {
 
   @Delete('users/:id')
   @ApiOperation({ summary: 'Delete specific user' })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'Successful', 
+  @ApiResponse({
+    status: 200,
+    description: 'Successful',
   })
   @ApiResponse({
     status: 401,
     description: 'Unauthorized',
   })
-  @ApiResponse({ 
-    status: 403, 
-    description: 'Forbidden', 
+  @ApiResponse({
+    status: 403,
+    description: 'Forbidden',
   })
-  @ApiResponse({ 
-    status: 500, 
-    description: 'Internal server error', 
+  @ApiResponse({
+    status: 500,
+    description: 'Internal server error',
   })
   remove(@Param('id') id: string) {
     return this.signUpsService.remove(+id);

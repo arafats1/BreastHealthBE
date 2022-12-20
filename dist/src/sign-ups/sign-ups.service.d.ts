@@ -28,15 +28,15 @@ export declare class SignUpsService {
             knowSomeoneWithBreastCondition: string;
             yourMotivation: string;
         }[];
+        reviews: {
+            review: string;
+        }[];
         followUps: {
             swellingOnLeftOrone: string;
             unUsualDischarge: string;
             hardSpotOnBreast: string;
             lastPeriodDate: string;
             daysPeriodLasted: string;
-        }[];
-        reviews: {
-            review: string;
         }[];
     })[]>;
     findOne(id: number): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp & {
@@ -49,15 +49,15 @@ export declare class SignUpsService {
             knowSomeoneWithBreastCondition: string;
             yourMotivation: string;
         }[];
+        reviews: {
+            review: string;
+        }[];
         followUps: {
             swellingOnLeftOrone: string;
             unUsualDischarge: string;
             hardSpotOnBreast: string;
             lastPeriodDate: string;
             daysPeriodLasted: string;
-        }[];
-        reviews: {
-            review: string;
         }[];
     }, never>;
     findOneByEmail(email: string): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
